@@ -1,13 +1,422 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #0074c7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #f3f3f3;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.navbar,
+.footer {
+  position: fixed;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  position: fixed;
+  padding: 1rem 0;
+  width: 100%;
+  z-index: 4;
+}
+.navbar {
+  top: 0;
+  left: 0;
+}
+.footer {
+  bottom: 0;
+  left: 0;
+}
+
+.navContainer,
+.footerContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mainContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-bottom: 10%;
+}
+
+.animeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.navTitle {
+  font-size: 2rem;
+}
+
+.navMenu {
+  display: flex;
+  font-size: 1.1rem;
+}
+.navMenuName {
+  padding-right: 1rem;
+  font-weight: 550;
+}
+.navMenuProfile {
+  font-size: 1.3rem;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
+}
+.btnLogout {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 550;
+}
+@media (max-width: 450px) {
+  .navContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navTitle {
+    font-size: 1.5rem;
+  }
+  .mainContainer {
+    flex-direction: column;
+  }
+  .animeContainer {
+    width: 100%;
+  }
+}
+
+.dropd {
+  align-self: flex-end;
+  background: var(--primary-color);
+  padding: 0.2rem 1rem;
+  outline: none;
+  border: none;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  width: 13.4rem;
+}
+.dropd button {
+  background: var(--primary-color);
+  border: none;
+}
+.dropd-current {
+  padding: 1rem;
+  color: #ffffff !important;
+  font-size: 1.1rem;
+}
+
+.dropd-item {
+  text-align: center !important;
+  padding: 0;
+}
+.dropd-list {
+  background: var(--primary-color) !important;
+}
+
+.dropd-item a {
+  font-size: 1.1rem !important;
+  font-weight: 500;
+  padding: 0.1rem !important;
+  color: #ffffff !important;
+}
+.dropd-item a:hover {
+  color: var(--primary-color) !important;
+}
+.animeListContainer {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  padding: 4% 4%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 200px));
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  /* justify-content: center; */
+  /* align-content: center; */
+  justify-items: center;
+  /* align-items: center; */
+}
+.animeItemContainer {
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.animeItem {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+.statContainer {
+  margin: auto;
+  margin-top: 65px;
+  /* width: 300px;  */
+  border-radius: 0.3rem;
+  /* overflow: hidden; */
+  /* padding: 0 4rem; */
+}
+
+@media (max-width: 950px) {
+  .animeListContainer {
+    grid-template-columns: repeat(2, minmax(100px, 200px));
+  }
+}
+
+@media (max-width: 450px) {
+  .animeListContainer {
+    grid-template-columns: minmax(100px, 200px);
+    padding: 4% 4%;
+    justify-content: center;
+  }
+  .statContainer {
+    margin: 30px 10px;
+    max-width: 350px;
+    overflow: hidden;
+  }
+  .statsContainer div div div {
+    width: 330px;
+  }
+  .statsContainer div div div svg {
+    width: 330px;
+  }
+}
+
+.detail {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animedetailContainer {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-bottom: 15vh;
+  margin-top: 10vh;
+  position: relative;
+}
+.backArrow {
+  position: absolute;
+  left: 1%;
+  top: 3%;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.imgContainer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgTitle {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  max-width: 300px;
+}
+.animeImage {
+  width: 100%;
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.animeImage img {
+  width: 100%;
+  display: block;
+}
+
+.detailsContainer {
+  margin: 1rem;
+}
+
+.detailsHeader {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.detailsSynopsis {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+.detailsSynopsis h3 {
+  font-size: 1.3rem;
+}
+.detailsSynopsis p {
+  max-width: 500px;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.7px;
+}
+
+.detailsCard {
+  background: #eeeeee;
+  padding: 1.5rem 2.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.episodesCont,
+.scoreCont,
+.typeCont,
+.dateCont {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.episodesHead,
+.scoreHead,
+.typeHead,
+.startHead,
+.endHead {
+  width: 120px;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 550;
+}
+.datesCont {
+  display: flex;
+  justify-content: space-between;
+}
+.dateStart,
+.dateEnd {
+  display: flex;
+}
+.value {
+  padding-left: 0.3rem;
+}
+
+@media (max-width: 450px) {
+  .animedetailContainer {
+    flex-direction: column;
+    margin: 10vh 0 15vw;
+  }
+  .imgContainer {
+    margin: 0;
+  }
+  .detailsContainer {
+    margin: 0;
+  }
+  .detailsHeader {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  .detailsSynopsis {
+    flex-direction: column;
+  }
+  .detailsSynopsis h3 {
+    margin-bottom: 0.3rem;
+  }
+  .detailsSynopsis p {
+    text-align: left;
+  }
+  .detailsCard {
+    padding: 10px;
+    margin-top: 0;
+  }
+  .datesCont {
+    flex-direction: column;
+  }
+}
+
+.login,
+.register {
+  width: 100vw;
+  height: 100vh;
+  background: var(--primary-color);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginHeader,
+.registerHeader {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+}
+
+.loginformTitle,
+.registerformTitle {
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.form-grp {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  width: 300px;
+}
+.passwordGrp {
+  position: relative;
+}
+.showPassword {
+  position: absolute;
+  bottom: 15%;
+  right: 3%;
+  color: #555555;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #f3f3f3;
+  padding: 0.5rem 3rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 550;
+}
+
+.registerDiv {
+  margin-top: 0.5rem;
+}
+.registerLink {
+  color: #f3f3f3;
+}
+.navHeaderLink {
+  text-decoration: none;
+  color: #ffffff;
 }
